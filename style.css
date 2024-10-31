@@ -5,15 +5,22 @@ body {
 
 .Repair-section {
     max-width: 1120px;
-    margin-left: 24px;
-    margin-top: 16px;
+    border-top: 1px solid #D9FFF5;
 }
 
 .Repair-section_name {
+    display: block;
+    height: 80px;
+    padding-left: 24px;
+    padding-top: 16px;
+
+    margin-bottom: 16px;
+
+    background-image: linear-gradient(to right, #F8F8F8, #FFFFFF);
     color: #7E7E82;
+
     font-size: 16px;
     text-transform: uppercase;
-    margin-bottom: 40px;
 }
 
 .Repair-section_container {
@@ -22,8 +29,23 @@ body {
     height: 160px;
     overflow: hidden;
     margin-bottom: 24px;
+    margin-left: 32px;
     row-gap: 16px;
     column-gap: 24px;
+}
+
+.Repair-section_container a {
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+}
+
+.Repair-section_container a:hover .Repair-section_card-button {
+    opacity: 0.7;
+}
+
+.Repair-section_container a:hover {
+    transform: scale(1.05);
 }
 
 .Repair-section_card {
@@ -46,6 +68,10 @@ body {
     background-position: 50% 50%;
 }
 
+.Repair-section_card-button:hover {
+    opacity: 0.7;
+}
+
 .Repair-section_card-logo {
     width: 128px;
     height: 44px;
@@ -53,45 +79,14 @@ body {
     background-position: 50% 50%;
 }
 
-.Repair-section_card-logo__lenovo {
-    background-image: url('./Icons/lenovo.svg');
-}
-
-.Repair-section_card-logo__samsung {
-    background-image: url('./Icons/samsung.svg');
-}
-
-.Repair-section_card-logo__apple {
-    background-image: url('./Icons/apple.svg');
-    background-position: left;
-}
-
-.Repair-section_card-logo__vievsonic {
-    background-image: url('./Icons/vievsonic.svg');
-}
-
-.Repair-section_card-logo__bosch {
-    background-image: url('./Icons/bosch.svg');
-}
-
-.Repair-section_card-logo__hp {
-    background-image: url('./Icons/hp.svg');
-    background-position: left;
-}
-
-.Repair-section_card-logo__acer {
-    background-image: url('./Icons/acer.svg');
-    background-position: 10%;
-}
-
-.Repair-section_card-logo__sony {
-    background-image: url('./Icons/sony.svg');
+.Repair-section_img--moved-left {
+    transform: translateX(-20px);
 }
 
 .Repair-section_button {
     display: flex;
     background-color: #F8F8F8;
-    margin-left: 5px;
+    margin-left: 32px;
 }
 
 .Repair-section_button::before {
@@ -111,25 +106,40 @@ body {
 
 .swiper-container {
     display: none;
-    width: 100%;
-    height: 72px;
+    width: 100vw;
+    height: 130px;
+    overflow: hidden;
 }
 
 .swiper {
-    float: left;
     margin-left: 16px;
-    width: 220px;
-    height: 72px;
-    overflow: visible;
+    width: 400px;
+    height: 130px;
 }
 
 .swiper-pagination {
-    transform: translateY(34px);
+    transform: translateX(-100px) translateY(-24px);
 }
+
 
 @media screen and (width > 1119px) {
     .Repair-section_container {
         column-gap: 32px;
+    }
+
+    .Repair-section_card {
+        width: 240px;
+    }
+
+}
+
+@media screen and (width > 400px) {
+    .swiper {
+        width: 600px;
+    }
+
+    .swiper-pagination {
+        transform: translateX(-200px) translateY(-24px);
     }
 
 }

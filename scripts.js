@@ -15,8 +15,11 @@ button.addEventListener('click', function () {
     }
 })
 
-const swiper = new Swiper('.swiper', {
+let swiper = new Swiper('.swiper', {
     spaceBetween: 16,
+    slidesPerView: 1,
+    width: 220,
+
     pagination: {
         el: '.swiper-pagination',
         clickable: true,

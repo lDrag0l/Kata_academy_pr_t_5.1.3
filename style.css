@@ -106,15 +106,27 @@ body {
 
 .swiper-container {
     display: none;
+    position: relative;
     width: 100vw;
     height: 130px;
     overflow: hidden;
 }
 
 .swiper {
-    margin-left: 16px;
     width: 400px;
     height: 130px;
+}
+
+.swiper-container::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0px;
+    z-index: 1;
+    width: 21px;
+    height: 81px;
+    background: linear-gradient(to left, #F8F8F8 16.84%, rgba(248, 248, 248, 0.0001) 100%);
+
 }
 
 .swiper-pagination {
@@ -140,6 +152,17 @@ body {
 
     .swiper-pagination {
         transform: translateX(-200px) translateY(-24px);
+    }
+
+}
+
+@media screen and (width > 600px) {
+    .swiper {
+        width: 800px;
+    }
+
+    .swiper-pagination {
+        transform: translateX(-300px) translateY(-24px);
     }
 
 }

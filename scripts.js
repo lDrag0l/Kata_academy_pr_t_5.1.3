@@ -1,31 +1,68 @@
 const button = document.querySelector('.Repair-section_button')
-const container = document.querySelector('.Repair-section_container')
+const repairSection = document.querySelector('.Repair-section')
+const repairSectionContainer = repairSection.querySelector('.swiper-container')
 
 button.addEventListener('click', function () {
 
-    if (container.style.height != "100%") {
-        container.style.height = "100%";
+    if (repairSectionContainer.style.height != "100%") {
+        repairSectionContainer.style.height = "100%";
         button.classList.add('Repair-section_button__rotate')
         button.textContent = 'Скрыть'
     }
     else {
         button.classList.remove('Repair-section_button__rotate')
-        container.style.height = "160px"
+        repairSectionContainer.style.height = "160px"
         button.textContent = 'Показать все'
     }
 })
+window.addEventListener('resize', function () {
+    let width = document.body.clientWidth;
+    if (width < 768) {
+        repairSectionContainer.style.height = "130px";
+    }
+    else {
+        repairSectionContainer.style.height = "160px";
+    }
+})
 
-let swiper = new Swiper('.swiper', {
-    spaceBetween: 16,
-    slidesPerView: 1,
-    width: 220,
+window.addEventListener('DOMContentLoaded', function () {
 
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
+    const resizableSwiper = (breakpoint, swiperClass, swiperSettings) => {
+        let swiper;
+
+        breakpoint = window.matchMedia(breakpoint);
+
+        const enableSwiper = function (className, settings) {
+            swiper = new Swiper(className, settings);
+        }
+
+        const checker = function () {
+            if (breakpoint.matches) {
+                return enableSwiper(swiperClass, swiperSettings);
+            } else {
+                if (swiper !== undefined) swiper.destroy(true, true);
+                return;
+            }
+        };
+
+        breakpoint.addEventListener('change', checker);
+        checker();
+    }
+
+    resizableSwiper(
+        '(max-width: 767px)',
+        '.swiper',
+        {
+            spaceBetween: 16,
+            slidesPerView: 1,
+            width: 240,
+
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        },
+    );
 });
-
-
 
 
